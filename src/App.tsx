@@ -150,7 +150,11 @@ function NavBar({ onToggleTheme, mode }: { onToggleTheme: () => void, mode: 'lig
 }
 
 function AppContent() {
-  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const [mode, setMode] = useState<'light' | 'dark'>(() => {
+    // Get saved theme from localStorage or default to 'dark'
+    const savedTheme = localStorage.getItem('theme');
+    return (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : 'dark';
+  });
 
   const theme = useMemo(
     () =>
@@ -165,11 +169,17 @@ function AppContent() {
     [mode],
   );
 
+  const handleToggleTheme = () => {
+    const newMode = mode === 'light' ? 'dark' : 'light';
+    setMode(newMode);
+    localStorage.setItem('theme', newMode);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ borderTop: '5px solid', borderColor: 'primary.main' }}>
-        <NavBar onToggleTheme={() => setMode(mode === 'light' ? 'dark' : 'light')} mode={mode} />
+        <NavBar onToggleTheme={handleToggleTheme} mode={mode} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
