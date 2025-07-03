@@ -1,0 +1,601 @@
+[{
+  "id": "44439863",
+  "title": "Vibe coding a Perl interface to a foreign library",
+  "text": null,
+  "url": "https://chrisarg.github.io/Killing-It-with-PERL/2025/06/30/Vibe-coding-a-Perl-interface-to-a-foreign-library-Part-1.html",
+  "timestamp": "2025-07-02 02:56:08.000000 UTC"
+}, {
+  "id": "44437682",
+  "title": "Vibe Specs: Vibe Coding That Works",
+  "text": null,
+  "url": "https://lukebechtel.com/blog/vibe-speccing",
+  "timestamp": "2025-07-01 20:23:01.000000 UTC"
+}, {
+  "id": "44437554",
+  "title": "Ask HN: Vibe coding way above my pay grade makes you uncomfortable?",
+  "text": "There\u0026#x27;s a lot going on in my head. I am simultaneously exhilarated, anxious, and concerned that I\u0026#x27;m leaving learning and personal development on the table. I\u0026#x27;m in the middle of developing a project that is purely vibe-coded in golang. I have little to no experience with golang (being primarily a python and C# dev). I\u0026#x27;m watching this LLM agent chew through my requirements and design spec and implement major features in under 20 minutes.\u003cp\u003eIt\u0026#x27;s awesome to behold. It writes code, builds tests around the code, documents it.\u003cp\u003eI feel like I\u0026#x27;m operating two levels above my \u0026#x27;pay grade\u0026#x27;, like I\u0026#x27;m cheating somehow. This is a personal project, so I\u0026#x27;m not getting paid for it, but still...\u003cp\u003eHas anyone else run into this?",
+  "url": null,
+  "timestamp": "2025-07-01 20:06:05.000000 UTC"
+}, {
+  "id": "44436173",
+  "title": "LLMs Are Software Diamonds",
+  "text": null,
+  "url": "https://www.evalapply.org/posts/llms-are-diamonds/index.html",
+  "timestamp": "2025-07-01 17:28:26.000000 UTC"
+}, {
+  "id": "44436144",
+  "title": "AI coding tools upend the \u0027buy versus build\u0027 software equation",
+  "text": null,
+  "url": "https://www.businessinsider.com/ai-coding-tools-buy-versus-build-software-saas-netlify-bolt-2025-6",
+  "timestamp": "2025-07-01 17:24:55.000000 UTC"
+}, {
+  "id": "44435834",
+  "title": "Software engineering with LLMs in 2025: reality check [video]",
+  "text": null,
+  "url": "https://www.youtube.com/watch?v\u003dEO3_qN_Ynsk",
+  "timestamp": "2025-07-01 16:54:13.000000 UTC"
+}, {
+  "id": "44435016",
+  "title": "Software Engineering with LLMs in 2025",
+  "text": null,
+  "url": "https://newsletter.pragmaticengineer.com/p/software-engineering-with-llms-in-2025",
+  "timestamp": "2025-07-01 15:39:52.000000 UTC"
+}, {
+  "id": "44432272",
+  "title": "Version Control for AI Coding",
+  "text": null,
+  "url": "https://branching.app",
+  "timestamp": "2025-07-01 10:00:33.000000 UTC"
+}, {
+  "id": "44427694",
+  "title": "Can Large Language Models Help Students Prove Software Correctness?",
+  "text": null,
+  "url": "https://arxiv.org/abs/2506.22370",
+  "timestamp": "2025-06-30 20:47:46.000000 UTC"
+}, {
+  "id": "44427434",
+  "title": "Ask HN: How to build a LifeOS using vibe coding?",
+  "text": "I am planning to build a life OS that helps me achieve and manage personal and professional goals. Would love to see some examples and get some ideas on the best way to approach this. Don\u0026#x27;t want to spend a lot of time just something that works and easy to use.",
+  "url": null,
+  "timestamp": "2025-06-30 20:24:03.000000 UTC"
+}, {
+  "id": "44424491",
+  "title": "A Software Architect\u0027s Level-Headed Take on Vibe Coding",
+  "text": "You’ve heard it all over the news: Everyone is using AI and vibe coding!\u003cp\u003eTechCrunch says all these startups generate code using AI.\u003cp\u003eIf Microsoft’s CEO Satya Nadella says 30% of the company\u0026#x27;s code is written by AI, you know Google, Meta, and Amazon probably claim something similar.\u003cp\u003eYou get the impression everyone is using AI coding assistants in some way.\u003cp\u003eI experimented with vibe coding (to test its utility and limitations) and have a few thoughts I’d like to share. And in brief, vibe coding is great, but because of its limitations, it is definitely not for everyone and the tool is not a fit for all use cases.\u003cp\u003eI know, this is a classic “it depends” answer. But here is my take on what it depends.\u003cp\u003eAs a software architect and the owner of a software services company, I believe AI and vibe coding can be used as tools for specific tasks, with advantages and limitations.\u003cp\u003eI probably don’t need to summarize the positive side: juniors learn faster, coding now being accessible for non-technical people. Using intuition, improvisation, and immediate feedback instead of detailed planning, formal specifications, or extensive analysis as a founder you can test ideas, iterate various possibilities, and launch creative or innovative solutions faster. It\u0026#x27;s a magic stick for early-stage startups, hackathons, and personal projects where speed, creativity, and exploration are key.\u003cp\u003eOn the negative side, if you work on mission-critical apps, existing production environments, or need to pass compliance for security, reliability, or scalability, thread carefully. Projects that need detailed documentation, long-term maintainability, and predictable behavior need a certain set of conditions and limitations not all AI code gen tools get right.\u003cp\u003eWhy do big corporations use it? They have private, stable code bases, standard coding practices, and rarely need to worry about compatibility because their code base doesn’t need frequent changes. It’s important to know this code is each corporation’s most valuable intellectual property, so it’s their most closely guarded secret that they can use internally. But that code is not available for training public AI models.\u003cp\u003eSo unless you’re a corporation with time-tested code, you’ll be using open-source code AI is usually trained on. Most of that code is experimental and written by Junior-level developers.\u003cp\u003eWould you trust ChatGPT for open heart surgery advice, flight control systems, NASA space mission code?\u003cp\u003eThis is why an average vibe coder will not be able to build safety-critical systems, financial software, and complex enterprise apps from the ground up because AI code generators don’t have access to most of the code IP, and vibe coders don’t have domain knowledge, haven’t developed a structured, carefully planned, and rigorously validated development methodology to make up for what AI code generators are missing.\u003cp\u003eMy take is that if you take a widely used coding language, AI code gen is more likely to work well, as there is enough publicly available training data available.\u003cp\u003eFor non-coders, I’d say vibe coding should eventually be good enough to create simple apps and sites. For everything else, you’ll need to work on expanding your domain expertise, as you’d want to know the options and trade-offs available to you so that the AI doesn’t make a decision for you while you are not aware of its consequences.\u003cp\u003eAnd lastly, on the TechCrunch hype. I’d like to see the analysis of the code, where that code was used, and take a look at the code AI wrote. Until then, don’t believe hype seeking announcements unless there is something concrete to back them up.",
+  "url": null,
+  "timestamp": "2025-06-30 15:28:16.000000 UTC"
+}, {
+  "id": "44424393",
+  "title": "Cursor launches a web app to manage AI coding agents",
+  "text": null,
+  "url": "https://techcrunch.com/2025/06/30/cursor-launches-a-web-app-to-manage-ai-coding-agents/",
+  "timestamp": "2025-06-30 15:17:59.000000 UTC"
+}, {
+  "id": "44424318",
+  "title": "AI/LLMs Can Help, Hinder Developers",
+  "text": null,
+  "url": "https://cacm.acm.org/blogcacm/how-ai-llms-can-help-hinder-developers/",
+  "timestamp": "2025-06-30 15:11:45.000000 UTC"
+}, {
+  "id": "44422415",
+  "title": "Agentic Coding: The Future of Software Development with Agents [video]",
+  "text": null,
+  "url": "https://www.youtube.com/watch?v\u003dnfOVgz_omlU",
+  "timestamp": "2025-06-30 12:26:16.000000 UTC"
+}, {
+  "id": "44422167",
+  "title": "Software 3.0 vs. AI Agentic Mesh: Why McKinsey Got It Wrong",
+  "text": null,
+  "url": "https://natesnewsletter.substack.com/p/software-30-vs-ai-agentic-mesh-why",
+  "timestamp": "2025-06-30 11:53:57.000000 UTC"
+}, {
+  "id": "44418359",
+  "title": "Reflections on agentic coding: Magic or Mirage",
+  "text": null,
+  "url": "https://www.async-let.com/blog/agentic-reflections/",
+  "timestamp": "2025-06-30 01:39:38.000000 UTC"
+}, {
+  "id": "44417384",
+  "title": "From poem to sonic art: strudel live coding with ChatGPT4 [video]",
+  "text": null,
+  "url": "https://www.youtube.com/watch?v\u003d7ijXAE21imE",
+  "timestamp": "2025-06-29 22:58:03.000000 UTC"
+}, {
+  "id": "44414193",
+  "title": "Show HN: I created a popular word game using an AI coding assistant",
+  "text": "I have not been coding for a long time. I was exploring how I could use coding again in a fun way.\u003cp\u003eI gave myself a small challenge — to build something useful and simple. Since I love word games, I decided to create one. I started writing prompts, testing outputs, and improving logic bit by bit.\u003cp\u003eIn a week, with the help of AI, I had a working prototype of a word game. I didn’t write all the code myself. But I understood every part of it, and that made it feel like my own.",
+  "url": "https://ws.wordsdescrambler.com/wordsearch",
+  "timestamp": "2025-06-29 16:11:36.000000 UTC"
+}, {
+  "id": "44406543",
+  "title": "Ask HN: Will LLM coding assistants make web client-side frameworks obsolete?",
+  "text": "With AI assistants now capable of writing plain, vanilla JavaScript and managing DOM manipulation, state, and even complex interactions without frameworks, I\u0026#x27;m questioning whether we still need the React ecosystem. LLMs can generate pure HTML\u0026#x2F;CSS\u0026#x2F;JS that\u0026#x27;s often more performant, has zero dependencies, and is easier to debug.\u003cp\u003eAre we holding onto frameworks out of habit, or do they still provide genuine value that AI-generated vanilla code can\u0026#x27;t match? What are the real trade-offs here - beyond developer familiarity and existing tooling?\u003cp\u003eCurious to hear from those who\u0026#x27;ve experimented with LLM-generated vanilla JS for production web apps versus traditional framework approaches.",
+  "url": null,
+  "timestamp": "2025-06-28 17:35:58.000000 UTC"
+}, {
+  "id": "44403893",
+  "title": "Parallelizing AI Coding Agents",
+  "text": null,
+  "url": "https://ainativedev.io/news/how-to-parallelize-ai-coding-agents",
+  "timestamp": "2025-06-28 11:27:05.000000 UTC"
+}, {
+  "id": "44399159",
+  "title": "Vibe Coding Is Not an Advantage",
+  "text": null,
+  "url": "https://asindu.xyz/posts/vibe-coding-is-not-an-advantage/",
+  "timestamp": "2025-06-27 18:40:29.000000 UTC"
+}, {
+  "id": "44399089",
+  "title": "15 AI Coding Agents evaluated with the same prompt",
+  "text": null,
+  "url": "https://github.com/The-Focus-AI/june-2025-coding-agent-report",
+  "timestamp": "2025-06-27 18:29:25.000000 UTC"
+}, {
+  "id": "44396150",
+  "title": "Ask HN: Best Agentic Coding on Mobile?",
+  "text": "With an agentic workflow it should be possible to have a good experience with this. So far I have tried replit (good but locked to their platform) and GitHub via Issues.",
+  "url": null,
+  "timestamp": "2025-06-27 12:10:51.000000 UTC"
+}, {
+  "id": "44395105",
+  "title": "PR Arena – AI Coding Agent Leaderboard",
+  "text": null,
+  "url": "https://prarena.ai/",
+  "timestamp": "2025-06-27 08:58:08.000000 UTC"
+}, {
+  "id": "44393997",
+  "title": "Airtable Has Pivoted to Vibe Coding",
+  "text": null,
+  "url": "https://www.airtable.com/",
+  "timestamp": "2025-06-27 05:48:21.000000 UTC"
+}, {
+  "id": "44388865",
+  "title": "How AI/LLMs Can Help, Hinder Developers",
+  "text": null,
+  "url": "https://cacm.acm.org/blogcacm/how-ai-llms-can-help-hinder-developers/",
+  "timestamp": "2025-06-26 16:21:57.000000 UTC"
+}, {
+  "id": "44388713",
+  "title": "How I Vibe Coding?",
+  "text": null,
+  "url": "https://xuanwo.io/2025/03-how-i-vibe-coding/",
+  "timestamp": "2025-06-26 16:05:47.000000 UTC"
+}, {
+  "id": "44388586",
+  "title": "AI Coding Assistants and the Case for More Open APIs",
+  "text": null,
+  "url": "https://somic.substack.com/p/ai-coding-assistants-and-the-case",
+  "timestamp": "2025-06-26 15:52:39.000000 UTC"
+}, {
+  "id": "44386629",
+  "title": "Best AI Coding Tools: Claude Code, Windsurf, and VSCode",
+  "text": null,
+  "url": "https://spectrum.ieee.org/best-ai-coding-tools",
+  "timestamp": "2025-06-26 12:11:18.000000 UTC"
+}, {
+  "id": "44386468",
+  "title": "Cursor Like AI Toolkit for Unreal Engine Developers",
+  "text": null,
+  "url": "https://ludusengine.com/",
+  "timestamp": "2025-06-26 11:49:17.000000 UTC"
+}, {
+  "id": "44386116",
+  "title": "AI coding tools are perhaps our new terminal emulators",
+  "text": null,
+  "url": "https://ghuntley.com/vt100/",
+  "timestamp": "2025-06-26 10:56:12.000000 UTC"
+}, {
+  "id": "44383223",
+  "title": "AI coding tools are perhaps our new terminal emulators",
+  "text": null,
+  "url": "https://ghuntley.com/vt100/",
+  "timestamp": "2025-06-26 00:52:07.000000 UTC"
+}, {
+  "id": "44382989",
+  "title": "Show HN: rulesync – CLI for bulk rule management across multiple AI coding tools",
+  "text": "There are various AI coding tools like Claude Code, Cursor, Copilot, Cline, Roo... (and Gemini CLI was also recently released), but the rule file specifications for each AI tool are not compatible.\u003cp\u003eSo I created a CLI tool that can automatically generate rule files for each tool by just creating and updating one group of md files, and published it as the `rulesync` npm package (of course, it supports Gemini CLI too!).\u003cp\u003eThe usage is simple:\u003cp\u003e1. Create `.rulesync\u0026#x2F;\u003ci\u003e.md` sample files. `npx rulesync init` (Or, if you already have rule files like Cursor\u0026#x27;s, you can convert them to rulesync files. `npx rulesync import --cursor`)\u003cp\u003e2. Edit `.rulesync\u0026#x2F;\u003c/i\u003e.md` to your liking. (You can add file templates with `npx rulesync add {RULE_NAME}`)\u003cp\u003e3. Generate rule files for the AI tools you want. `npx rulesync generate --cursor --claudecode --geminicli`\u003cp\u003eThank you.",
+  "url": "https://github.com/dyoshikawa/rulesync",
+  "timestamp": "2025-06-26 00:04:51.000000 UTC"
+}, {
+  "id": "44381915",
+  "title": "Vibe Coding Showcase: 12 Projects Built by Everyday People",
+  "text": null,
+  "url": "https://kp.substack.com/p/vibecodingshowcase",
+  "timestamp": "2025-06-25 21:17:33.000000 UTC"
+}, {
+  "id": "44379865",
+  "title": "Agentic Coding Tool by Sourcegraph",
+  "text": null,
+  "url": "https://ampcode.com/",
+  "timestamp": "2025-06-25 17:36:51.000000 UTC"
+}, {
+  "id": "44377831",
+  "title": "AI Coding Startup Anysphere Fields VC Offers at over $18B Valuation",
+  "text": null,
+  "url": "https://www.bloomberg.com/news/articles/2025-06-17/ai-startup-anysphere-fields-vc-offers-at-over-18-billion-valuation",
+  "timestamp": "2025-06-25 14:35:38.000000 UTC"
+}, {
+  "id": "44377754",
+  "title": "How Can Vibe Coding Transform Programming Education? – Communications of the ACM",
+  "text": null,
+  "url": "https://cacm.acm.org/blogcacm/how-can-vibe-coding-transform-programming-education/",
+  "timestamp": "2025-06-25 14:29:24.000000 UTC"
+}, {
+  "id": "44373313",
+  "title": "Show HN: TableSprint- Supabase alternative with vibe coding features",
+  "text": "We have built tablesprint for users to vibe code data structure and use our inbuilt APIs to get started. It also features airtable like or better capability in terms of UIs and Templates. While we have built lot of things on one Platform, you can vibe code various UIs on top of tables like forms,kanban,card,charts, calendar, gantt. We also feature micro app which works on mobile and Web both and where you can just combine screens, apply permissions and publish. Permission is another standout feature for us. Lot of integrations built in for notification, gmail, outlook, stripe and others.",
+  "url": "https://www.tablesprint.com/",
+  "timestamp": "2025-06-25 03:04:38.000000 UTC"
+}, {
+  "id": "44370518",
+  "title": "Personal Copilot: Train Your Own Coding Assistant",
+  "text": null,
+  "url": "https://huggingface.co/blog/personal-copilot",
+  "timestamp": "2025-06-24 20:11:20.000000 UTC"
+}, {
+  "id": "44369819",
+  "title": "The same solidjs codebase to build our AI coding tool for many platforms",
+  "text": null,
+  "url": "https://www.usejolt.ai/blog/a-solid-approach-to-building-client-apps",
+  "timestamp": "2025-06-24 19:11:10.000000 UTC"
+}, {
+  "id": "44368273",
+  "title": "A programmer yelling at the clouds about vibe coding",
+  "text": null,
+  "url": "https://octomind.dev/blog/programmer-yelling-at-the-clouds-about-vibe-coding",
+  "timestamp": "2025-06-24 16:56:58.000000 UTC"
+}, {
+  "id": "44367868",
+  "title": "Warp 2.0: Reimagining Coding with Agentic Development Environment",
+  "text": null,
+  "url": "https://www.warp.dev/blog",
+  "timestamp": "2025-06-24 16:23:15.000000 UTC"
+}, {
+  "id": "44366291",
+  "title": "Opencode: AI coding agent, built for the terminal",
+  "text": null,
+  "url": "https://github.com/sst/opencode",
+  "timestamp": "2025-06-24 13:53:21.000000 UTC"
+}, {
+  "id": "44365993",
+  "title": "Oblique Strategies for Vibe Coding",
+  "text": null,
+  "url": "https://useyourexperience.com/oblique-strategies-for-vibe-coding-how-to-break-creative-blocks-in-ai-programming",
+  "timestamp": "2025-06-24 13:24:18.000000 UTC"
+}, {
+  "id": "44365112",
+  "title": "Show HN: vibe-git - a frictionless git workflow for vibe coding (with MCP)",
+  "text": "I got tired of context-switching between coding and git operations, so I built vibe-git - an MCP server that automates the entire git workflow when AI   assistants make code changes.\u003cp\u003eHere\u0026#x27;s how it works:\u003cp\u003e- You say \u0026quot;Let\u0026#x27;s start a vibe session\u0026quot; → AI calls start_vibing(), server creates a branch and starts a file watcher\u003cp\u003e- The watcher detects when AI edits files and auto-commits changes (every second)\u003cp\u003e- You say \u0026quot;Let\u0026#x27;s stop vibing\u0026quot; → AI calls stop_vibing(), server squashes commits, rebases on latest main, and creates a PR\u003cp\u003eThe \u0026quot;vibe\u0026quot; philosophy: you speak naturally about features, AI codes, file watcher handles git seamlessly. Plus you never lose work if\u0026#x2F;when the agent goes rogue since every change is committed as it happens.\u003cp\u003eI\u0026#x27;ve been dogfooding this by developing vibe-git using Claude Code + vibe-git.\u003cp\u003eThe current stack is implemented in Python + FastMCP + beartype + plum + mutmut.\u003cp\u003eMy experience so far is it\u0026#x27;s much easier to stay in the flow when you don\u0026#x27;t have to context switch to committing \u0026#x2F; managing git and I\u0026#x27;ve found I micromanage the agent less and instead focus on iterating towards a good looking PR.",
+  "url": "https://github.com/software-is-art/vibe-git",
+  "timestamp": "2025-06-24 11:47:23.000000 UTC"
+}, {
+  "id": "44364899",
+  "title": "End of the line for coding LLMs will do a better job. How do I pay my mortgage?",
+  "text": null,
+  "url": "https://daniel-payne-keldan-systems.medium.com/end-of-the-line-for-coding-c9c77e9e1cab",
+  "timestamp": "2025-06-24 11:15:32.000000 UTC"
+}, {
+  "id": "44364358",
+  "title": "Why vibe coding won\u0027t replace engineers",
+  "text": null,
+  "url": "https://somethingwithai.substack.com/p/why-vibe-coding-wont-replace-engineers",
+  "timestamp": "2025-06-24 09:38:25.000000 UTC"
+}, {
+  "id": "44364223",
+  "title": "Software 3.0 vs. AI Agentic Mesh: Why McKinsey Got It Wrong",
+  "text": null,
+  "url": "https://natesnewsletter.substack.com/p/software-30-vs-ai-agentic-mesh-why",
+  "timestamp": "2025-06-24 09:12:32.000000 UTC"
+}, {
+  "id": "44361045",
+  "title": "How I configure VS Code for agentic coding",
+  "text": null,
+  "url": "https://beyang.org/how-i-configure-vs-code-for-agentic-coding.html",
+  "timestamp": "2025-06-23 22:55:22.000000 UTC"
+}, {
+  "id": "44356839",
+  "title": "AI Coding Landscape (June 2025)",
+  "text": null,
+  "url": "https://paradite.github.io/ai-coding/",
+  "timestamp": "2025-06-23 15:34:44.000000 UTC"
+}, {
+  "id": "44356488",
+  "title": "How do LLMs and AI coding tools solve new problems when Stack Overflow is dead?",
+  "text": null,
+  "url": "https://andreagao.com/posts/ai-challenge-after-stack-overflow-died/",
+  "timestamp": "2025-06-23 14:59:52.000000 UTC"
+}, {
+  "id": "44353516",
+  "title": "The Agentic Protocols That Will Define the Next Decade of Software",
+  "text": null,
+  "url": "https://www.anup.io/p/the-agentic-protocols-that-will-define",
+  "timestamp": "2025-06-23 08:12:16.000000 UTC"
+}, {
+  "id": "44353302",
+  "title": "Tracking PR volume from AI coding agents",
+  "text": null,
+  "url": "https://prarena.ai",
+  "timestamp": "2025-06-23 07:25:58.000000 UTC"
+}, {
+  "id": "44348477",
+  "title": "Show HN: AI Distiller (aid) reduces hallucinations during vibe coding",
+  "text": null,
+  "url": "https://github.com/janreges/ai-distiller",
+  "timestamp": "2025-06-22 17:10:41.000000 UTC"
+}, {
+  "id": "44348454",
+  "title": "Ask HN: What\u0027s the tightest loop for vibe coding you know of?",
+  "text": "I like OpenAI Codex but not a fan of the delays and the rebuilding and refreshing etc.\u003cp\u003eCan you please suggest the best way to get a tight feedback loop?\u003cp\u003eIdeally: I can speak a command to affect the code and I see the page refreshed as soon as it is parsed and executed.",
+  "url": null,
+  "timestamp": "2025-06-22 17:08:13.000000 UTC"
+}, {
+  "id": "44347355",
+  "title": "AI Coding Tools You Can Use",
+  "text": null,
+  "url": "https://spectrum.ieee.org/best-ai-coding-tools",
+  "timestamp": "2025-06-22 14:48:12.000000 UTC"
+}, {
+  "id": "44336970",
+  "title": "Opencode – AI coding agent, built for the terminal",
+  "text": null,
+  "url": "https://github.com/sst/opencode",
+  "timestamp": "2025-06-21 12:13:23.000000 UTC"
+}, {
+  "id": "44335807",
+  "title": "Surprising hostility towards LLM based coding in R/programming",
+  "text": null,
+  "url": "https://medium.com/@chetan_51670/i-got-downvoted-to-hell-telling-programmers-its-ok-to-use-llms-b36eec1ff7a8",
+  "timestamp": "2025-06-21 08:42:17.000000 UTC"
+}, {
+  "id": "44334936",
+  "title": "Vibe coding a data room app",
+  "text": null,
+  "url": "https://djpardis.medium.com/vibe-coding-a-data-room-app-2858246857e9",
+  "timestamp": "2025-06-21 06:02:30.000000 UTC"
+}, {
+  "id": "44330510",
+  "title": "Freecoding – An Alternative to Vibe Coding",
+  "text": null,
+  "url": "https://snare.dev/musings/freecoding/",
+  "timestamp": "2025-06-20 18:27:29.000000 UTC"
+}, {
+  "id": "44329919",
+  "title": "Vibe Coding Creates Outdated Code and How to Fix It with MCP",
+  "text": null,
+  "url": "https://milvus.io/blog/why-vibe-coding-generate-outdated-code-and-how-to-fix-it-with-milvus-mcp.md",
+  "timestamp": "2025-06-20 17:27:49.000000 UTC"
+}, {
+  "id": "44328769",
+  "title": "Planting flags in AI coding territory",
+  "text": null,
+  "url": "https://world.hey.com/ricardo.tavares/planting-flags-in-ai-coding-territory-a618029f",
+  "timestamp": "2025-06-20 15:39:02.000000 UTC"
+}, {
+  "id": "44328329",
+  "title": "Quick notes on a brief agentic coding experience",
+  "text": null,
+  "url": "https://olano.dev/blog/agentic-coding-experience/",
+  "timestamp": "2025-06-20 14:57:11.000000 UTC"
+}, {
+  "id": "44327670",
+  "title": "Creating Software Without Writing Code: Testing AI \"Vibe Coding\" Tools",
+  "text": null,
+  "url": "https://blog.codeyam.com/p/creating-software-without-writing",
+  "timestamp": "2025-06-20 13:41:17.000000 UTC"
+}, {
+  "id": "44324695",
+  "title": "The Developer\u0027s Manifesto for the Age of LLMs",
+  "text": null,
+  "url": "https://philipotoole.com/the-developers-manifesto-for-the-age-of-llms/",
+  "timestamp": "2025-06-20 04:15:26.000000 UTC"
+}, {
+  "id": "44321706",
+  "title": "Show HN: Run your favorite open-source AI coding agent in the browser",
+  "text": "Hey HN,\u003cp\u003eAs a developer who\u0026#x27;s always been intimidated by the terminal, I found using terminal-based AI coding agents like Aider, Codex, or Plandex an obstacle.\u003cp\u003eTo solve this, I built a browser-based UI that brings the power of these tools to a familiar web interface.",
+  "url": "https://github.com/newrev-io/newrev",
+  "timestamp": "2025-06-19 19:24:13.000000 UTC"
+}, {
+  "id": "44320545",
+  "title": "LLMs are Programming Languages (2023)",
+  "text": null,
+  "url": "https://theahura.substack.com/p/llms-are-programming-languages-part",
+  "timestamp": "2025-06-19 17:08:09.000000 UTC"
+}, {
+  "id": "44320445",
+  "title": "Show HN: We released a vibe coding platform",
+  "text": null,
+  "url": "https://databutton.com/",
+  "timestamp": "2025-06-19 16:59:46.000000 UTC"
+}, {
+  "id": "44319221",
+  "title": "opencode - AI coding agent built for the terminal",
+  "text": null,
+  "url": "https://github.com/opencode-ai/opencode",
+  "timestamp": "2025-06-19 14:52:21.000000 UTC"
+}, {
+  "id": "44319023",
+  "title": "How to Make Your Developer Documentation Work with LLMs",
+  "text": null,
+  "url": "https://fusionauth.io/blog/llms-for-docs",
+  "timestamp": "2025-06-19 14:29:54.000000 UTC"
+}, {
+  "id": "44318029",
+  "title": "AI coding is less fun",
+  "text": null,
+  "url": "https://nicolaiarocci.com/ai-coding-is-less-fun/",
+  "timestamp": "2025-06-19 12:30:52.000000 UTC"
+}, {
+  "id": "44316081",
+  "title": "Agentic Engineering in Action with Mitchell Hashimoto [video]",
+  "text": null,
+  "url": "https://www.youtube.com/watch?v\u003dXyQ4ZTS5dGw",
+  "timestamp": "2025-06-19 06:40:49.000000 UTC"
+}, {
+  "id": "44313933",
+  "title": "PromptJam – multiplayer prompt engineering for LLMs",
+  "text": null,
+  "url": "https://promptjam.com",
+  "timestamp": "2025-06-18 22:46:22.000000 UTC"
+}, {
+  "id": "44312426",
+  "title": "Recipes – A Vibe Coding Pattern for Common Code Transformations",
+  "text": null,
+  "url": "http://arcturus-labs.com/blog/2025/06/17/recipes--a-pattern-for-common-code-transformations/",
+  "timestamp": "2025-06-18 19:00:46.000000 UTC"
+}, {
+  "id": "44311740",
+  "title": "The Rise of \"Visual Vibe Coding\"",
+  "text": null,
+  "url": "https://ainativedev.io/news/the-rise-of-visual-vibe-coding",
+  "timestamp": "2025-06-18 17:26:37.000000 UTC"
+}, {
+  "id": "44310825",
+  "title": "Parallelizing AI Coding Agents",
+  "text": null,
+  "url": "https://ainativedev.io/news/how-to-parallelize-ai-coding-agents",
+  "timestamp": "2025-06-18 15:37:21.000000 UTC"
+}, {
+  "id": "44310048",
+  "title": "Lessons from Building AI Coding Assistants: Context Retrieval and Evaluation",
+  "text": null,
+  "url": "https://sourcegraph.com/blog/lessons-from-building-ai-coding-assistants-context-retrieval-and-evaluation",
+  "timestamp": "2025-06-18 14:09:23.000000 UTC"
+}, {
+  "id": "44310044",
+  "title": "Agentic Engineering",
+  "text": null,
+  "url": "https://zed.dev/agentic-engineering",
+  "timestamp": "2025-06-18 14:08:52.000000 UTC"
+}, {
+  "id": "44309819",
+  "title": "Show HN: I built new type of dev environment for agentic coding",
+  "text": "The main goal of this was to be able to not just run multiple Claude Code sessions at once, but actually manage them and keep track of what I was doing. Sometimes this is multiple attempts on the same task, sometimes I work several tasks at once.\u003cp\u003eReally I was just sick of twiddling my thumbs waiting for the coding agent to finish, and I wanted it to be easy to work on\u0026#x2F;review\u0026#x2F;test another change while I waited.",
+  "url": "https://github.com/stravu/crystal",
+  "timestamp": "2025-06-18 13:42:32.000000 UTC"
+}, {
+  "id": "44309563",
+  "title": "The double loop model for agentic coding",
+  "text": null,
+  "url": "https://testdouble.com/insights/youre-holding-it-wrong-the-double-loop-model-for-agentic-coding",
+  "timestamp": "2025-06-18 13:06:33.000000 UTC"
+}, {
+  "id": "44309393",
+  "title": "Show HN: Free local security checks for AI coding in VSCode, Cursor and Windsurf",
+  "text": "Hi HN!\u003cp\u003eWe just launched Codacy Guardrails, an IDE extension with a CLI for code analysis and MCP server that enforces security \u0026amp; quality rules on AI-generated code in real-time. It hooks into AI coding assistants (like VS Code Agent Mode, Cursor, Windsurf), silently scanning and fixing AI-suggested code that has vulnerabilities or violates your coding standards, while the code it’s being generated.\u003cp\u003eWe built this because coding agents can be a double-edged sword. They do boost productivity, but can easily introduce insecure or non-compliant code. One recent research team at NYU found that 40% of Copilot’s outputs were buggy or exploitable [1]. Other surveys mention that people are spending more time debugging AI-generated code [2].\u003cp\u003eThat\u0026#x27;s why we created “guardrails” to catch security problems early.\u003cp\u003eCodacy Guardrails uses a collection of open-source static analyzers (like Semgrep and Trivy) to scan the AI’s output against 2000+ rules. We currently support JavaScript\u0026#x2F;TypeScript, Python, and Java, focusing on things like OWASP Top 10 vulns, hardcoded secrets, dependency checks, code complexity and styling violations, and you can customize the rules to match your project’s needs. We\u0026#x27;re not using any AI models, it\u0026#x27;s “classic” static code analysis working alongside your AI assistant.\u003cp\u003eHere’s a quick demo: \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;youtu.be\u0026#x2F;pB02u0ntQpM\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;youtu.be\u0026#x2F;pB02u0ntQpM\u003c/a\u003e\u003cp\u003eThe extension is free for all developers. (We do have paid plans for teams to apply rules centrally, but that’s not needed to use the extension and local code analysis with agents.)\u003cp\u003eSetup is pretty straightforward: Install the extension and enable Codacy’s CLI and MCP Server from the sidebar.\u003cp\u003eWe’re eager to hear what the HN community thinks! Does this approach sound useful in your AI coding workflow? Have you encountered security issues from AI-generated code?\u003cp\u003eWe hope Codacy Guardrails can make AI-assisted development a bit safer and more trustworthy. Thanks for reading!\u003cp\u003eGet extension: \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;www.codacy.com\u0026#x2F;get-ide-extension\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;www.codacy.com\u0026#x2F;get-ide-extension\u003c/a\u003e Docs: \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;docs.codacy.com\u0026#x2F;codacy-guardrails\u0026#x2F;codacy-guardrails-getting-started\u0026#x2F;\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;docs.codacy.com\u0026#x2F;codacy-guardrails\u0026#x2F;codacy-guardrails-...\u003c/a\u003e\u003cp\u003eSources [1]: NYU Research: \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;www.researchgate.net\u0026#x2F;publication\u0026#x2F;388193053_Asleep_at_the_Keyboard_Assessing_the_Security_of_GitHub_Copilot\u0026#x27;s_Code_Contributions\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;www.researchgate.net\u0026#x2F;publication\u0026#x2F;388193053_Asleep_at...\u003c/a\u003e [2]: \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;devops.com\u0026#x2F;survey-ai-tools-are-increasing-amount-of-bad-code-needing-to-be-fixed\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;devops.com\u0026#x2F;survey-ai-tools-are-increasing-amount-of-...\u003c/a\u003e",
+  "url": null,
+  "timestamp": "2025-06-18 12:42:51.000000 UTC"
+}, {
+  "id": "44307547",
+  "title": "Ask HN: What\u0027s your vibe coding workflow?",
+  "text": "I have a few small apps I\u0026#x27;d love to put together, but I\u0026#x27;m not sure what the best tools to use are. What do you guys like? Gemini? Claude? Some mixture?",
+  "url": null,
+  "timestamp": "2025-06-18 07:45:10.000000 UTC"
+}, {
+  "id": "44306046",
+  "title": "Zoë Kooyman on Post-Stallman Changes at the Free Software Foundation",
+  "text": null,
+  "url": "https://fossforce.com/2025/03/zoe-kooyman-on-post-stallman-changes-at-the-free-software-foundation/",
+  "timestamp": "2025-06-18 02:08:59.000000 UTC"
+}, {
+  "id": "44305636",
+  "title": "Show HN: Rulebook AI – rules and memory manager for AI coding IDEs",
+  "text": null,
+  "url": "https://github.com/botingw/rulebook-ai",
+  "timestamp": "2025-06-18 00:56:42.000000 UTC"
+}, {
+  "id": "44303949",
+  "title": "Zed – Agentic Engineering",
+  "text": null,
+  "url": "https://zed.dev/agentic-engineering",
+  "timestamp": "2025-06-17 21:05:59.000000 UTC"
+}, {
+  "id": "44303891",
+  "title": "Let\u0027s Teach an LLM to Write a New Programming Language",
+  "text": null,
+  "url": "https://nurturethevibe.com/blog/teach-llm-to-write-new-programming-language/",
+  "timestamp": "2025-06-17 20:59:53.000000 UTC"
+}, {
+  "id": "44303161",
+  "title": "Quick notes on a brief agentic coding experience",
+  "text": null,
+  "url": "https://olano.dev/blog/agentic-coding-experience/",
+  "timestamp": "2025-06-17 19:49:45.000000 UTC"
+}, {
+  "id": "44301970",
+  "title": "Understanding and Coding the KV Cache in LLMs from Scratch",
+  "text": null,
+  "url": "https://sebastianraschka.com/blog/2025/coding-the-kv-cache-in-llms.html",
+  "timestamp": "2025-06-17 18:03:27.000000 UTC"
+}, {
+  "id": "44301548",
+  "title": "LLMs Don\u0027t Think Like Developers – Until Now",
+  "text": null,
+  "url": "https://twitter.com/BoazLavon/status/1934959419147604235",
+  "timestamp": "2025-06-17 17:29:57.000000 UTC"
+}, {
+  "id": "44299833",
+  "title": "Show HN: Henosia – We built a JavaScript Engine for vibe coding",
+  "text": "Hey HN, I\u0026#x27;m Jim – one half of the two-person team building Henosia (\u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;www.henosia.com\u0026#x2F;\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;www.henosia.com\u0026#x2F;\u003c/a\u003e), a browser-based visual vibe coding tool with a purpose-built JavaScript Engine.\u003cp\u003eWhy would we do something as crazy as building our own JavaScript Engine? In a word, speed.\u003cp\u003eToday\u0026#x27;s vibe coding is built around files: Edit, save, a build is triggered, Hot Module Refresh triggers a file-level re-evaluation, the page re-renders. This means that code updates are much heavier and slower than they need to be, especially compared to how fast drawing and design tools can perform updates when you edit.\u003cp\u003eTo get design tool like speeds (60FPS) for vibe coding, edit operations need to happen at the lowest possible level: The syntax tree nodes. Changes to the syntax tree then need to cause a minimal amount of code to be re-evaluated in the browser, which is where our purpose-built JavaScript Engine comes into play. Well, technically it\u0026#x27;s a TypeScript Engine, because it directly evaluates TypeScript syntax trees (ASTs), skipping over non-executable nodes like type annotations.\u003cp\u003eHere\u0026#x27;s how it works: The engine receives a change in the AST because the user made a visual edit of a selected component using our component props panel, e.g. to change the size property on a Button component. We\u0026#x27;re currently focusing on React, so the engine identifies the closest most fine-grained way to perform the rendering update, which in this case is to re-render the nearest parent component that owns the Button component. This happens in just a few milliseconds, and we\u0026#x27;re able to optimistically perform the change on the client before distributing the change to the server.\u003cp\u003eSince we\u0026#x27;re not bound to file save operations and file watchers, we can have multiple pending draft edits at once, e.g. to present the user with multiple AI-based edit suggestions. This capability opens up a ton of new ways to interact with code, with design tools and code editors converging into something entirely new.\u003cp\u003eIf you want to see this thing in action, head over to \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;www.henosia.com\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;www.henosia.com\u003c/a\u003e and drop a prompt to get the project started. Use the selection tool, it\u0026#x27;s the button with a pen on a bullseye icon next to the chat input. This starts our code engine, and you\u0026#x27;re able to instantly preview and edit Tailwind styling and component properties at 60FPS. Our docs at \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;docs.henosia.com\u0026#x2F;edit\u0026#x2F;select\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;docs.henosia.com\u0026#x2F;edit\u0026#x2F;select\u003c/a\u003e have more info, and \u003ca href\u003d\"https:\u0026#x2F;\u0026#x2F;www.youtube.com\u0026#x2F;watch?v\u003d5yqsFGt7zAg\" rel\u003d\"nofollow\"\u003ehttps:\u0026#x2F;\u0026#x2F;www.youtube.com\u0026#x2F;watch?v\u003d5yqsFGt7zAg\u003c/a\u003e walks through the capabiliies.\u003cp\u003eI’d love to hear what you think about our approach, and where we should take it next :)\u003cp\u003ePS: For a limited time our free plan includes unlimited AI messages and visual edits.",
+  "url": "https://www.henosia.com",
+  "timestamp": "2025-06-17 14:39:22.000000 UTC"
+}, {
+  "id": "44297857",
+  "title": "Understanding and Coding the KV Cache in LLMs from Scratch",
+  "text": null,
+  "url": "https://magazine.sebastianraschka.com/p/coding-the-kv-cache-in-llms",
+  "timestamp": "2025-06-17 11:31:25.000000 UTC"
+}, {
+  "id": "44297243",
+  "title": "Best way to prompt AI coding tools is by using user stories",
+  "text": "This is mostly useful for building new features\u0026#x2F;fixing bugs\u003cp\u003etemplate User Story: - As a user, I want the system to {feature} so that {problem_it_solves}\u003cp\u003eAcceptance Criteria (Rules the AI should follow): - - -",
+  "url": null,
+  "timestamp": "2025-06-17 09:33:46.000000 UTC"
+}, {
+  "id": "44295113",
+  "title": "LiveCodeBench Pro: How Olympiad Medalists Judge LLMs in Competitive Programming",
+  "text": null,
+  "url": "https://livecodebenchpro.com/",
+  "timestamp": "2025-06-17 02:01:50.000000 UTC"
+}, {
+  "id": "44294633",
+  "title": "Generative AI coding tools and agents do not work for me",
+  "text": null,
+  "url": "https://blog.miguelgrinberg.com/post/why-generative-ai-coding-tools-and-agents-do-not-work-for-me",
+  "timestamp": "2025-06-17 00:33:45.000000 UTC"
+}, {
+  "id": "44293184",
+  "title": "How Do Olympiad Medalists Judge LLMs in Competitive Programming?",
+  "text": null,
+  "url": "https://arxiv.org/abs/2506.11928",
+  "timestamp": "2025-06-16 20:37:51.000000 UTC"
+}, {
+  "id": "44290693",
+  "title": "Running AI coding agents locally with container use [video]",
+  "text": null,
+  "url": "https://www.youtube.com/watch?v\u003dSaeML37bxOg",
+  "timestamp": "2025-06-16 15:46:05.000000 UTC"
+}, {
+  "id": "44287027",
+  "title": "LiveCodeBench Pro: How Olympiad Medalists Judge LLMs in Competitive Programming?",
+  "text": null,
+  "url": "https://arxiv.org/abs/2506.11928",
+  "timestamp": "2025-06-16 06:12:18.000000 UTC"
+}, {
+  "id": "44285999",
+  "title": "ClackyAi：Your Agentic Coding Studio, Prototype, Refine, Collaborate and Evolve",
+  "text": null,
+  "url": "https://clacky.ai/",
+  "timestamp": "2025-06-16 01:12:10.000000 UTC"
+}, {
+  "id": "44285669",
+  "title": "Building software on top of Large Language Models",
+  "text": null,
+  "url": "https://simonw.substack.com/p/building-software-on-top-of-large",
+  "timestamp": "2025-06-15 23:40:40.000000 UTC"
+}, {
+  "id": "44283788",
+  "title": "Pitfalls of premature closure with LLM assisted coding",
+  "text": null,
+  "url": "https://www.shayon.dev/post/2025/164/pitfalls-of-premature-closure-with-llm-assisted-coding/",
+  "timestamp": "2025-06-15 17:49:58.000000 UTC"
+}]
