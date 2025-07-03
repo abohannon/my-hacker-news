@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { HackerNewsService, type HackerNewsResponse } from '../services/hackernews';
-import type { Story } from '../App';
+import { HackerNewsService } from '../services/hackernews';
+import type { Story, HackerNewsResponse } from '../types';
 import stories from '../hn_stories.json';
 
 export const HACKER_NEWS_QUERY_KEY = ['hacker-news-stories'] as const;

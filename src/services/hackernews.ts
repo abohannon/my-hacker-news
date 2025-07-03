@@ -1,15 +1,4 @@
-import type { Story } from '../App';
-
-export interface HackerNewsResponse {
-  stories: Story[];
-  cached: boolean;
-  lastUpdated: string;
-}
-
-export interface HackerNewsError {
-  error: string;
-  message: string;
-}
+import type { HackerNewsResponse } from '../types';
 
 const CLOUD_FUNCTION_URL = import.meta.env.VITE_CLOUD_FUNCTION_URL || 'https://YOUR_FUNCTION_URL_HERE';
 

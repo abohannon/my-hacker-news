@@ -16,18 +16,6 @@ import StoryCard from "../components/StoryCard";
 import { useState, useMemo } from "react";
 import { useHackerNews } from "../hooks/useHackerNews";
 
-export interface Story {
-  id: string;
-  title: string;
-  text: string | null;
-  url: string | null;
-  score: string | null;
-  parent: string | null;
-  ranking: string | null;
-  descendants: string | null;
-  timestamp: string;
-}
-
 export default function Home() {
   const [sort, setSort] = useState("latest");
 
@@ -53,9 +41,22 @@ export default function Home() {
             (parseInt(b.descendants || "0") - parseInt(a.descendants || "0"))
           );
         case "latest":
-          return parseInt(b.timestamp) - parseInt(a.timestamp);
-        case "oldest":
-          return parseInt(a.timestamp) - parseInt(b.timestamp);
+        case "oldest": {
+
+          const aTime = new Date(a.timestamp).getTime();
+          const bTime = new Date(b.timestamp).getTime();
+
+            // For invalid dates, fallback to string comparison
+          if (isNaN(aTime) || isNaN(bTime)) {
+            return sort === "latest"
+              ? b.timestamp.localeCompare(a.timestamp)
+              : a.timestamp.localeCompare(b.timestamp);
+          }
+
+          return sort === "latest"
+            ? bTime - aTime  // Latest first
+            : aTime - bTime; // Oldest first
+        }
         default:
           return 0;
       }

@@ -6,7 +6,7 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import type { Story } from "../App";
+import type { Story } from "../types";
 
 interface StoryCardProps {
   story: Story;
