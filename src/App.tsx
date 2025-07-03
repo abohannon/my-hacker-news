@@ -1,53 +1,157 @@
 import {
   Container,
-  Grid,
   Typography,
   Box,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   IconButton,
   Button,
-  CircularProgress,
-  Alert,
-  Chip,
+  AppBar,
+  Toolbar,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import StoryCard from "./components/StoryCard";
+import InfoIcon from '@mui/icons-material/Info';
+import HomeIcon from '@mui/icons-material/Home';
+import MenuIcon from '@mui/icons-material/Menu';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { useState, useMemo } from "react";
-import { useHackerNews } from "./hooks/useHackerNews";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
-export interface Story {
-  id: string;
-  title: string;
-  text: string | null;
-  url: string | null;
-  score: string | null;
-  parent: string | null;
-  ranking: string | null;
-  descendants: string | null;
-  timestamp: string;
+function NavBar({ onToggleTheme, mode }: { onToggleTheme: () => void, mode: 'light' | 'dark' }) {
+  const location = useLocation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const menuItems = [
+    { text: 'Feed', path: '/', icon: <HomeIcon /> },
+    { text: 'About', path: '/about', icon: <InfoIcon /> },
+  ];
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        AI Dev Feed
+      </Typography>
+      <List>
+        {menuItems.map((item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton 
+              component={Link} 
+              to={item.path}
+              selected={location.pathname === item.path}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+        <ListItem disablePadding>
+          <ListItemButton onClick={onToggleTheme}>
+            <ListItemIcon>
+              {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </ListItemIcon>
+            <ListItemText primary={mode === 'dark' ? 'Light Mode' : 'Dark Mode'} />
+          </ListItemButton>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  return (
+    <>
+      <AppBar position="static" sx={{ mb: 3 }}>
+        <Toolbar>
+          {isMobile && (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              flexGrow: 1,
+              fontSize: isMobile ? '1rem' : '1.25rem'
+            }}
+          >
+            Hacker News AI Dev Feed
+          </Typography>
+          {!isMobile && (
+            <>
+              <Button 
+                color="inherit" 
+                component={Link} 
+                to="/"
+                startIcon={<HomeIcon />}
+                sx={{ 
+                  backgroundColor: location.pathname === '/' ? 'rgba(255,255,255,0.1)' : 'transparent'
+                }}
+              >
+                Feed
+              </Button>
+              <Button 
+                color="inherit" 
+                component={Link} 
+                to="/about"
+                startIcon={<InfoIcon />}
+                sx={{ 
+                  backgroundColor: location.pathname === '/about' ? 'rgba(255,255,255,0.1)' : 'transparent'
+                }}
+              >
+                About
+              </Button>
+              <IconButton 
+                color="inherit" 
+                onClick={onToggleTheme}
+                sx={{ ml: 1 }}
+              >
+                {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </>
+  );
 }
 
-function App() {
-  const [sort, setSort] = useState("latest");
+function AppContent() {
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
-
-  const {
-    stories,
-    isLoading,
-    error,
-    isError,
-    isFetching,
-    lastUpdated,
-    isCached,
-    refetch,
-  } = useHackerNews();
 
   const theme = useMemo(
     () =>
@@ -62,94 +166,25 @@ function App() {
     [mode],
   );
 
-  const sortedStories = useMemo(() => {
-    const storiesToSort = [...stories];
-    storiesToSort.sort((a, b) => {
-      switch (sort) {
-        case "score":
-          return (parseInt(b.score || "0") - parseInt(a.score || "0"));
-        case "descendants":
-          return (
-            (parseInt(b.descendants || "0") - parseInt(a.descendants || "0"))
-          );
-        case "latest":
-          return parseInt(b.timestamp) - parseInt(a.timestamp);
-        case "oldest":
-          return parseInt(a.timestamp) - parseInt(b.timestamp);
-        default:
-          return 0;
-      }
-    });
-    return storiesToSort;
-  }, [stories, sort]);
-
-  const loading = isLoading || isFetching;
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container sx={{ borderTop: '5px solid', borderColor: 'primary.main' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '20px 0' }}>
-          <Typography variant="h2" component="h1" gutterBottom align="center" style={{ margin: '0' }}>
-            Hacker News AI Dev Feed
-          </Typography>
-          <IconButton sx={{ ml: 1 }} onClick={() => setMode(mode === 'light' ? 'dark' : 'light')} color="inherit">
-            {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
-        </Box>
-
-        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 2, flexWrap: 'wrap' }}>
-          <Button
-            variant="outlined"
-            onClick={() => refetch()}
-            disabled={loading}
-            startIcon={loading ? <CircularProgress size={16} /> : <RefreshIcon />}
-            size="small"
-          >
-            {loading ? 'Loading...' : 'Refresh'}
-          </Button>
-
-          {lastUpdated && (
-            <Chip
-              label={`Updated: ${new Date(lastUpdated).toLocaleString()}`}
-              size="small"
-              color={isCached ? 'warning' : 'success'}
-              variant="outlined"
-            />
-          )}
-        </Box>
-
-        {isError && error && (
-          <Alert severity="warning" sx={{ marginBottom: 2 }}>
-            {error.message} - Showing cached or fallback data
-          </Alert>
-        )}
-        <Box sx={{ minWidth: 120, marginBottom: 2 }}>
-          <FormControl fullWidth>
-            <InputLabel id="sort-by-label">Sort By</InputLabel>
-            <Select
-              labelId="sort-by-label"
-              id="sort-by-select"
-              value={sort}
-              label="Sort By"
-              onChange={(e) => setSort(e.target.value)}
-            >
-              <MenuItem value="score">Score</MenuItem>
-              <MenuItem value="descendants">Number of Comments</MenuItem>
-              <MenuItem value="latest">Latest</MenuItem>
-              <MenuItem value="oldest">Oldest</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Grid container spacing={3}>
-          {sortedStories.map((story) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
-              <StoryCard story={story} />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+      <Box sx={{ borderTop: '5px solid', borderColor: 'primary.main' }}>
+        <NavBar onToggleTheme={() => setMode(mode === 'light' ? 'dark' : 'light')} mode={mode} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Box>
     </ThemeProvider>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

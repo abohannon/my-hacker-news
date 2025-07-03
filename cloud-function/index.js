@@ -43,7 +43,34 @@ WHERE
     LOWER(title) LIKE '%windsurf%' OR
     LOWER(title) LIKE '%ai coding%' OR
     LOWER(title) LIKE '%vibe coding%' OR
-    LOWER(title) LIKE '%agentic%'
+    LOWER(title) LIKE '%agentic%' OR
+    LOWER(title) LIKE '%claude%' OR
+    LOWER(title) LIKE '%anthropic%' OR
+    LOWER(title) LIKE '%gemini%' OR
+    LOWER(title) LIKE '%bard%' OR
+    LOWER(title) LIKE '%code generation%' OR
+    LOWER(title) LIKE '%code assistant%' OR
+    LOWER(title) LIKE '%ai pair programming%' OR
+    LOWER(title) LIKE '%prompt engineering%' OR
+    LOWER(title) LIKE '%code completion%' OR
+    LOWER(title) LIKE '%ai code review%' OR
+    LOWER(title) LIKE '%automated testing%' OR
+    LOWER(title) LIKE '%ai debugging%' OR
+    LOWER(title) LIKE '%machine learning ops%' OR
+    LOWER(title) LIKE '%mlops%' OR
+    LOWER(title) LIKE '%ai workflow%' OR
+    LOWER(title) LIKE '%developer productivity%' OR
+    LOWER(title) LIKE '%ai tooling%' OR
+    LOWER(title) LIKE '%intelligent ide%' OR
+    LOWER(title) LIKE '%smart autocomplete%' OR
+    LOWER(title) LIKE '%ai refactoring%' OR
+    LOWER(title) LIKE '%automated documentation%' OR
+    LOWER(title) LIKE '%v0%' OR
+    LOWER(title) LIKE '%bolt.new%' OR
+    LOWER(title) LIKE '%lovable%' OR
+    LOWER(title) LIKE '%devin%' OR
+    LOWER(title) LIKE '%ai agent%' OR
+    LOWER(title) LIKE '%coding agent%'
   )
   AND
   (
