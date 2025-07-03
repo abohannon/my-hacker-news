@@ -1,5 +1,4 @@
 import {
-  Container,
   Typography,
   Box,
   IconButton,
@@ -50,8 +49,8 @@ function NavBar({ onToggleTheme, mode }: { onToggleTheme: () => void, mode: 'lig
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton 
-              component={Link} 
+            <ListItemButton
+              component={Link}
               to={item.path}
               selected={location.pathname === item.path}
             >
@@ -87,10 +86,10 @@ function NavBar({ onToggleTheme, mode }: { onToggleTheme: () => void, mode: 'lig
               <MenuIcon />
             </IconButton>
           )}
-          <Typography 
-            variant="h6" 
-            component="div" 
-            sx={{ 
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
               flexGrow: 1,
               fontSize: isMobile ? '1rem' : '1.25rem'
             }}
@@ -99,30 +98,30 @@ function NavBar({ onToggleTheme, mode }: { onToggleTheme: () => void, mode: 'lig
           </Typography>
           {!isMobile && (
             <>
-              <Button 
-                color="inherit" 
-                component={Link} 
+              <Button
+                color="inherit"
+                component={Link}
                 to="/"
                 startIcon={<HomeIcon />}
-                sx={{ 
+                sx={{
                   backgroundColor: location.pathname === '/' ? 'rgba(255,255,255,0.1)' : 'transparent'
                 }}
               >
                 Feed
               </Button>
-              <Button 
-                color="inherit" 
-                component={Link} 
+              <Button
+                color="inherit"
+                component={Link}
                 to="/about"
                 startIcon={<InfoIcon />}
-                sx={{ 
+                sx={{
                   backgroundColor: location.pathname === '/about' ? 'rgba(255,255,255,0.1)' : 'transparent'
                 }}
               >
                 About
               </Button>
-              <IconButton 
-                color="inherit" 
+              <IconButton
+                color="inherit"
                 onClick={onToggleTheme}
                 sx={{ ml: 1 }}
               >
