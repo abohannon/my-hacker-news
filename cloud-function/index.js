@@ -3,8 +3,12 @@ const { Firestore } = require('@google-cloud/firestore');
 const cors = require('cors')({ 
   origin: [
     'http://localhost:5173',  // Development
-    'https://my-hacker-news-navy.vercel.app' // Production
-  ]
+    'https://my-hacker-news-navy.vercel.app', // Old production URL
+    'https://hacker-news-ai-dev-feed.vercel.app' // Actual production URL
+  ],
+  credentials: true,
+  methods: ['GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'x-api-key']
 });
 const crypto = require('crypto');
 
@@ -124,6 +128,27 @@ function formatStories(rows) {
  * Main Cloud Function entry point
  */
 exports.fetchHackerNewsStories = async (req, res) => {
+  // Set CORS headers manually for all requests
+  const allowedOrigins = [
+    'http://localhost:5173',
+    'https://my-hacker-news-navy.vercel.app',
+    'https://hacker-news-ai-dev-feed.vercel.app'
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.set('Access-Control-Allow-Origin', origin);
+  }
+  
+  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, x-api-key');
+  res.set('Access-Control-Max-Age', '3600');
+  
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(204).send('');
+  }
+  
   return cors(req, res, async () => {
     try {
       // Only allow GET requests
