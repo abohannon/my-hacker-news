@@ -8,14 +8,19 @@ import {
   Select,
   MenuItem,
   IconButton,
+  Button,
+  CircularProgress,
+  Alert,
+  Chip,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import stories from "./hn_stories.json";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import StoryCard from "./components/StoryCard";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
+import { useHackerNews } from "./hooks/useHackerNews";
 
 export interface Story {
   id: string;
@@ -31,8 +36,20 @@ export interface Story {
 
 function App() {
   const [sort, setSort] = useState("latest");
-  const [sortedStories, setSortedStories] = useState<Story[]>([]);
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const [useCloudFunction, setUseCloudFunction] = useState(false);
+  
+  // Use React Query hook for data fetching
+  const {
+    stories,
+    isLoading,
+    error,
+    isError,
+    isFetching,
+    lastUpdated,
+    isCached,
+    refetch,
+  } = useHackerNews({ useCloudFunction });
 
   const theme = useMemo(
     () =>
@@ -47,8 +64,9 @@ function App() {
     [mode],
   );
 
-  useEffect(() => {
-    const storiesToSort = [...(stories as Story[])];
+  // Sort stories client-side based on current sort preference
+  const sortedStories = useMemo(() => {
+    const storiesToSort = [...stories];
     storiesToSort.sort((a, b) => {
       switch (sort) {
         case "score":
@@ -65,8 +83,10 @@ function App() {
           return 0;
       }
     });
-    setSortedStories(storiesToSort);
-  }, [sort]);
+    return storiesToSort;
+  }, [stories, sort]);
+
+  const loading = isLoading || isFetching;
 
   return (
     <ThemeProvider theme={theme}>
@@ -80,6 +100,45 @@ function App() {
             {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Box>
+        
+        {/* Data source toggle and refresh controls */}
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 2, flexWrap: 'wrap' }}>
+          <Button
+            variant={useCloudFunction ? "contained" : "outlined"}
+            onClick={() => setUseCloudFunction(!useCloudFunction)}
+            size="small"
+          >
+            {useCloudFunction ? 'Live Data' : 'Static Data'}
+          </Button>
+          
+          {useCloudFunction && (
+            <Button
+              variant="outlined"
+              onClick={() => refetch()}
+              disabled={loading}
+              startIcon={loading ? <CircularProgress size={16} /> : <RefreshIcon />}
+              size="small"
+            >
+              {loading ? 'Loading...' : 'Refresh'}
+            </Button>
+          )}
+          
+          {lastUpdated && (
+            <Chip
+              label={`Updated: ${new Date(lastUpdated).toLocaleString()}`}
+              size="small"
+              color={isCached ? 'warning' : 'success'}
+              variant="outlined"
+            />
+          )}
+        </Box>
+        
+        {/* Error display */}
+        {isError && error && (
+          <Alert severity="warning" sx={{ marginBottom: 2 }}>
+            {error.message} - Showing cached or fallback data
+          </Alert>
+        )}
         <Box sx={{ minWidth: 120, marginBottom: 2 }}>
           <FormControl fullWidth>
             <InputLabel id="sort-by-label">Sort By</InputLabel>
