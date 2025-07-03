@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "deploy": "gcloud functions deploy fetchHackerNewsStories --runtime nodejs20 --trigger-http --allow-unauthenticated --region us-central1"
+    "deploy": "gcloud functions deploy fetchHackerNewsStories --gen2 --runtime nodejs20 --trigger-http --allow-unauthenticated --region us-central1 --memory 512MB --timeout 60s"
   },
   "dependencies": {
     "@google-cloud/bigquery": "^7.3.0",

@@ -1,6 +1,11 @@
 const { BigQuery } = require('@google-cloud/bigquery');
 const { Firestore } = require('@google-cloud/firestore');
-const cors = require('cors')({ origin: true });
+const cors = require('cors')({ 
+  origin: [
+    'http://localhost:5173',  // Development
+    'https://my-hacker-news-navy.vercel.app' // Production
+  ]
+});
 const crypto = require('crypto');
 
 // Initialize clients
@@ -9,7 +14,7 @@ const firestore = new Firestore();
 
 // Cache configuration
 const CACHE_COLLECTION = 'hn_cache';
-const CACHE_DURATION_HOURS = 6;
+const CACHE_DURATION_HOURS = 1;
 
 // BigQuery configuration
 const QUERY = `
@@ -94,6 +99,18 @@ function formatStories(rows) {
 exports.fetchHackerNewsStories = async (req, res) => {
   return cors(req, res, async () => {
     try {
+      // Only allow GET requests
+      if (req.method !== 'GET') {
+        return res.status(405).json({ error: 'Method not allowed' });
+      }
+      
+      // Optional: Check for API key in production
+      const apiKey = req.headers['x-api-key'];
+      const expectedApiKey = process.env.API_KEY;
+      
+      if (expectedApiKey && apiKey !== expectedApiKey) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
       const queryHash = getQueryHash(QUERY);
       const cacheRef = firestore.collection(CACHE_COLLECTION).doc(queryHash);
       
@@ -140,7 +157,7 @@ exports.fetchHackerNewsStories = async (req, res) => {
       console.error('Error:', error);
       return res.status(500).json({
         error: 'Failed to fetch stories',
-        message: error.message
+        message: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
       });
     }
   });

@@ -37,9 +37,7 @@ export interface Story {
 function App() {
   const [sort, setSort] = useState("latest");
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
-  const [useCloudFunction, setUseCloudFunction] = useState(false);
-  
-  // Use React Query hook for data fetching
+
   const {
     stories,
     isLoading,
@@ -49,7 +47,7 @@ function App() {
     lastUpdated,
     isCached,
     refetch,
-  } = useHackerNews({ useCloudFunction });
+  } = useHackerNews();
 
   const theme = useMemo(
     () =>
@@ -64,7 +62,6 @@ function App() {
     [mode],
   );
 
-  // Sort stories client-side based on current sort preference
   const sortedStories = useMemo(() => {
     const storiesToSort = [...stories];
     storiesToSort.sort((a, b) => {
@@ -100,29 +97,18 @@ function App() {
             {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Box>
-        
-        {/* Data source toggle and refresh controls */}
+
         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', marginBottom: 2, flexWrap: 'wrap' }}>
           <Button
-            variant={useCloudFunction ? "contained" : "outlined"}
-            onClick={() => setUseCloudFunction(!useCloudFunction)}
+            variant="outlined"
+            onClick={() => refetch()}
+            disabled={loading}
+            startIcon={loading ? <CircularProgress size={16} /> : <RefreshIcon />}
             size="small"
           >
-            {useCloudFunction ? 'Live Data' : 'Static Data'}
+            {loading ? 'Loading...' : 'Refresh'}
           </Button>
-          
-          {useCloudFunction && (
-            <Button
-              variant="outlined"
-              onClick={() => refetch()}
-              disabled={loading}
-              startIcon={loading ? <CircularProgress size={16} /> : <RefreshIcon />}
-              size="small"
-            >
-              {loading ? 'Loading...' : 'Refresh'}
-            </Button>
-          )}
-          
+
           {lastUpdated && (
             <Chip
               label={`Updated: ${new Date(lastUpdated).toLocaleString()}`}
@@ -132,8 +118,7 @@ function App() {
             />
           )}
         </Box>
-        
-        {/* Error display */}
+
         {isError && error && (
           <Alert severity="warning" sx={{ marginBottom: 2 }}>
             {error.message} - Showing cached or fallback data

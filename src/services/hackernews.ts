@@ -11,7 +11,6 @@ export interface HackerNewsError {
   message: string;
 }
 
-// This will be set to your actual Cloud Function URL after deployment
 const CLOUD_FUNCTION_URL = import.meta.env.VITE_CLOUD_FUNCTION_URL || 'https://YOUR_FUNCTION_URL_HERE';
 
 export class HackerNewsService {
@@ -27,9 +26,6 @@ export class HackerNewsService {
     return HackerNewsService.instance;
   }
 
-  /**
-   * Fetch stories from the Cloud Function
-   */
   async fetchStories(): Promise<HackerNewsResponse> {
     try {
       const response = await fetch(CLOUD_FUNCTION_URL, {
@@ -44,34 +40,28 @@ export class HackerNewsService {
       }
 
       const data: HackerNewsResponse = await response.json();
-      
+
       // Update local cache
       this.cache = data;
-      
+
       return data;
     } catch (error) {
       console.error('Error fetching stories:', error);
-      
+
       // Return cached data if available
       if (this.cache) {
         console.log('Returning cached data due to error');
         return this.cache;
       }
-      
+
       throw error;
     }
   }
 
-  /**
-   * Get cached stories if available
-   */
   getCachedStories(): HackerNewsResponse | null {
     return this.cache;
   }
 
-  /**
-   * Clear local cache
-   */
   clearCache(): void {
     this.cache = null;
   }

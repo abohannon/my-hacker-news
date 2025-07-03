@@ -15,9 +15,11 @@ My Hacker News - A React-based Hacker News client with dual data sources: static
 - `npm run lint` - Run ESLint checks
 
 ### Google Cloud Deployment
-- `./setup-gcloud.sh` - Automated setup of Google Cloud resources
+- `./setup-gcloud.sh` - Automated setup of Google Cloud resources (requires billing enabled)
+- `./deploy-function.sh` - Quick redeploy of Cloud Function only
 - `./test-function.js` - Test the deployed Cloud Function
 - `cd cloud-function && npm run deploy` - Deploy Cloud Function manually
+- **Prerequisites**: Google Cloud billing must be enabled before running setup
 
 ### Testing
 No test framework is currently set up. If adding tests, you'll need to configure a test runner first.
@@ -30,7 +32,7 @@ No test framework is currently set up. If adding tests, you'll need to configure
 
 ### Data Flow (Live Mode)
 1. React app calls Cloud Function API
-2. Cloud Function checks Firestore cache (6-hour TTL)
+2. Cloud Function checks Firestore cache (1-hour TTL)
 3. On cache miss: Query BigQuery → Store in Firestore → Return to client
 4. On cache hit: Return cached data immediately
 
@@ -62,10 +64,11 @@ interface Story {
 - **Google Cloud**: BigQuery for data, Cloud Functions for API, Firestore for caching
 
 ### Cloud Architecture
-- **Cloud Function**: Node.js 20 runtime with 512MB memory, 60s timeout
+- **Cloud Function**: Node.js 20 runtime with 512MB memory, 60s timeout, Gen 2 (Cloud Run)
 - **BigQuery**: Queries `bigquery-public-data.hacker_news.full` table
 - **Firestore**: Native mode database for caching query results
-- **Caching Strategy**: 6-hour TTL to minimize BigQuery costs (<$3/month)
+- **Caching Strategy**: 1-hour TTL for fresh data (free tier usage)
+- **Security**: CORS-protected API (localhost:5173 + production domain), optional API key auth
 
 ## Development Notes
 
@@ -75,3 +78,18 @@ interface Story {
 - Grid layout is responsive (12/6/4 columns for xs/sm/md breakpoints)
 - Error handling with fallback to cached/static data
 - Loading states and last updated indicators
+
+## Security & Deployment
+
+### Cloud Function Security
+- **CORS Protection**: Only allows requests from authorized domains:
+  - Development: `http://localhost:5173`
+  - Production: `https://my-hacker-news-navy.vercel.app`
+- **Optional API Key**: Can be enabled by setting `API_KEY` environment variable
+- **Function URL**: `https://us-central1-hacker-news-ai-dev-feed.cloudfunctions.net/fetchHackerNewsStories`
+
+### Deployment Requirements
+1. **Google Cloud Billing**: Must be enabled for the project
+2. **Required APIs**: BigQuery, Cloud Functions, Firestore, Cloud Run (auto-enabled by setup script)
+3. **Service Account**: Uses default compute service account with necessary permissions
+4. **Environment Variables**: Copy `.env.example` to `.env` (created automatically by setup scripts)

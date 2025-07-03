@@ -51,6 +51,7 @@ gcloud services enable bigquery.googleapis.com
 gcloud services enable cloudfunctions.googleapis.com  
 gcloud services enable firestore.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
+gcloud services enable run.googleapis.com  # Required for Cloud Functions Gen 2
 ```
 
 ### 2. Create Firestore Database
@@ -62,7 +63,14 @@ gcloud firestore databases create --location=us-central1 --type=firestore-native
 ```bash
 cd cloud-function
 npm install
+# Create .gitignore file to avoid deployment errors
+echo "node_modules/
+.env
+.env.local
+*.log" > .gitignore
+
 gcloud functions deploy fetchHackerNewsStories \
+    --gen2 \
     --runtime nodejs20 \
     --trigger-http \
     --allow-unauthenticated \
@@ -96,15 +104,15 @@ VITE_CLOUD_FUNCTION_URL=https://your-function-url-here
 ## Cost Management
 
 ### Expected Costs
-- **BigQuery**: ~$2.40/month (120 queries × $0.02)
+- **BigQuery**: $0/month (well within 1TB free tier)
 - **Cloud Functions**: Free tier (2M invocations/month)
 - **Firestore**: Free tier (50K reads/day, 20K writes/day)
-- **Total**: <$3/month
+- **Total**: $0/month
 
 ### Monitoring
 - Set up billing alerts in [Google Cloud Console](https://console.cloud.google.com/billing)
 - Monitor function executions and BigQuery usage
-- Cache refreshes every 6 hours to minimize costs
+- Cache refreshes every hour for fresh data (still within free tier)
 
 ## Architecture Overview
 
@@ -114,7 +122,7 @@ React App → Cloud Function → BigQuery (cached in Firestore)
 
 1. **Frontend**: React app with toggle between static and live data
 2. **Cloud Function**: Node.js function that queries BigQuery
-3. **Caching**: Firestore stores results for 6 hours
+3. **Caching**: Firestore stores results for 1 hour
 4. **Fallback**: Static JSON data if Cloud Function fails
 
 ## Troubleshooting
@@ -146,7 +154,28 @@ React App → Cloud Function → BigQuery (cached in Firestore)
 
 ## Security Notes
 
-- The Cloud Function is publicly accessible (required for frontend)
-- No sensitive data is stored in the caching layer
-- Consider adding API key authentication for production use
-- Monitor usage to prevent unexpected costs
+### Current Security Measures
+- **CORS Protection**: Cloud Function only accepts requests from authorized domains:
+  - Development: `http://localhost:5173`
+  - Production: `https://my-hacker-news-navy.vercel.app`
+- **No Sensitive Data**: Only public BigQuery data is cached
+- **Optional API Key**: Can be enabled by setting `API_KEY` environment variable
+
+### Additional Security Options
+1. **Enable API Key Authentication**:
+   ```bash
+   gcloud functions deploy fetchHackerNewsStories \
+       --gen2 \
+       --runtime nodejs20 \
+       --trigger-http \
+       --allow-unauthenticated \
+       --region us-central1 \
+       --memory 512MB \
+       --timeout 60s \
+       --set-env-vars API_KEY=your-secret-key
+   ```
+
+2. **Monitor Usage**: Set up billing alerts to prevent unexpected costs
+
+### Domain Restrictions
+The Cloud Function uses CORS to restrict access to authorized domains only. Other websites cannot make requests to your API from browsers, but direct API calls (curl, Postman) will still work.

@@ -1,13 +1,53 @@
-# React + TypeScript + Vite
+# My Hacker News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based Hacker News client focused on AI and software engineering stories, with dual data sources: static JSON and live BigQuery data via Google Cloud Functions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔄 **Dual Data Sources**: Toggle between static JSON and live BigQuery data
+- 🔍 **AI-Focused**: Filters for LLM, ChatGPT, Copilot, and other AI coding tools
+- 📊 **Smart Caching**: 1-hour Firestore cache for fresh data (free tier usage)
+- 🔒 **Secure API**: CORS-protected Cloud Function with optional API key auth
+- 📱 **Responsive Design**: Material-UI with mobile-friendly grid layout
+- ⚡ **Fast Development**: Vite with HMR and TypeScript
 
-## Expanding the ESLint configuration
+## Quick Start
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start development server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Optional - Setup BigQuery integration**:
+   ```bash
+   ./setup-gcloud.sh
+   ```
+
+## Architecture
+
+- **Frontend**: React + TypeScript + Vite + Material-UI
+- **Backend**: Google Cloud Functions (Node.js 20)
+- **Database**: BigQuery public dataset + Firestore caching
+- **Deployment**: Vercel (frontend) + Google Cloud (backend)
+
+## Documentation
+
+- **[CLAUDE.md](./CLAUDE.md)**: Detailed project structure and development notes
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)**: Complete deployment guide for Google Cloud setup
+
+## Security
+
+The Cloud Function is secured with:
+- **CORS Protection**: Only accepts requests from authorized domains
+- **Optional API Key**: Can be enabled for additional security
+- **No Sensitive Data**: Only public BigQuery data is cached
+
+## Development Notes
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
