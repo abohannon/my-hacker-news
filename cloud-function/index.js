@@ -21,7 +21,7 @@ const CACHE_COLLECTION = 'hn_cache';
 const CACHE_DURATION_HOURS = 1;
 
 // BigQuery configuration
-const QUERY = `
+const BASE_QUERY = `
 SELECT
   id,
   title,
@@ -166,14 +166,23 @@ WHERE
   )
 ORDER BY
   timestamp DESC
-LIMIT 200
 `;
+
+/**
+ * Build the complete query with pagination
+ */
+function buildQuery(limit = 200, offset = 0) {
+  return `${BASE_QUERY}
+LIMIT ${limit}
+OFFSET ${offset}`;
+}
 
 /**
  * Generate a hash of the query for cache key
  */
-function getQueryHash(query) {
-  return crypto.createHash('md5').update(query).digest('hex');
+function getQueryHash(query, limit, offset) {
+  const fullQuery = `${query}_limit_${limit}_offset_${offset}`;
+  return crypto.createHash('md5').update(fullQuery).digest('hex');
 }
 
 /**
@@ -242,7 +251,14 @@ exports.fetchHackerNewsStories = async (req, res) => {
       if (expectedApiKey && apiKey !== expectedApiKey) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
-      const queryHash = getQueryHash(QUERY);
+
+      // Parse and validate pagination parameters
+      const limit = Math.min(Math.max(parseInt(req.query.limit) || 200, 1), 500); // Min 1, Max 500
+      const offset = Math.max(parseInt(req.query.offset) || 0, 0); // Min 0
+
+      console.log(`Fetching stories with limit: ${limit}, offset: ${offset}`);
+
+      const queryHash = getQueryHash(BASE_QUERY, limit, offset);
       const cacheRef = firestore.collection(CACHE_COLLECTION).doc(queryHash);
 
       // Check cache first
@@ -255,7 +271,13 @@ exports.fetchHackerNewsStories = async (req, res) => {
           return res.json({
             stories: cacheData.stories,
             cached: true,
-            lastUpdated: cacheData.timestamp.toDate().toISOString()
+            lastUpdated: cacheData.timestamp.toDate().toISOString(),
+            pagination: {
+              limit: cacheData.limit || limit,
+              offset: cacheData.offset || offset,
+              count: cacheData.stories.length,
+              hasMore: cacheData.stories.length === (cacheData.limit || limit)
+            }
           });
         }
       }
@@ -263,7 +285,7 @@ exports.fetchHackerNewsStories = async (req, res) => {
       // Cache miss or expired - query BigQuery
       console.log('Querying BigQuery...');
       const [rows] = await bigquery.query({
-        query: QUERY,
+        query: buildQuery(limit, offset),
         location: 'US',
       });
 
@@ -273,7 +295,9 @@ exports.fetchHackerNewsStories = async (req, res) => {
       await cacheRef.set({
         stories,
         timestamp: Firestore.Timestamp.now(),
-        queryText: QUERY
+        queryText: BASE_QUERY, // This will be overwritten by buildQuery
+        limit,
+        offset
       });
 
       console.log(`Fetched ${stories.length} stories from BigQuery`);
@@ -281,7 +305,13 @@ exports.fetchHackerNewsStories = async (req, res) => {
       return res.json({
         stories,
         cached: false,
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
+        pagination: {
+          limit,
+          offset,
+          count: stories.length,
+          hasMore: stories.length === limit
+        }
       });
 
     } catch (error) {
