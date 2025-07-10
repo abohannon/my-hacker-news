@@ -38,6 +38,7 @@ interface UsePaginatedHackerNewsResult {
 interface UsePaginatedHackerNewsParams {
   page: number;
   itemsPerPage: number;
+  sortBy?: string;
 }
 
 export function useHackerNews(): UseHackerNewsResult {
@@ -95,7 +96,7 @@ export function useHackerNews(): UseHackerNewsResult {
   };
 }
 
-export function usePaginatedHackerNews({ page, itemsPerPage }: UsePaginatedHackerNewsParams): UsePaginatedHackerNewsResult {
+export function usePaginatedHackerNews({ page, itemsPerPage, sortBy = 'latest' }: UsePaginatedHackerNewsParams): UsePaginatedHackerNewsResult {
   const hackerNewsService = HackerNewsService.getInstance();
 
   // Calculate what data we need to fetch
@@ -106,17 +107,19 @@ export function usePaginatedHackerNews({ page, itemsPerPage }: UsePaginatedHacke
   const currentPageParams: PaginationParams = {
     limit: isFirstPage ? itemsPerPage * 2 : itemsPerPage,
     offset: currentOffset,
+    sortBy,
   };
 
   // Prefetch next page (if not first page)
   const nextPageParams: PaginationParams = {
     limit: itemsPerPage,
     offset: currentOffset + itemsPerPage,
+    sortBy,
   };
 
   const queryConfigs = [
     {
-      queryKey: [...PAGINATED_HACKER_NEWS_QUERY_KEY, 'current', page, itemsPerPage],
+      queryKey: [...PAGINATED_HACKER_NEWS_QUERY_KEY, 'current', page, itemsPerPage, sortBy],
       queryFn: async (): Promise<HackerNewsResponse> => {
         try {
           return await hackerNewsService.fetchStories(currentPageParams);
@@ -154,7 +157,7 @@ export function usePaginatedHackerNews({ page, itemsPerPage }: UsePaginatedHacke
   // Add prefetch query for next page (only if not first page)
   if (!isFirstPage) {
     queryConfigs.push({
-      queryKey: [...PAGINATED_HACKER_NEWS_QUERY_KEY, 'prefetch', page + 1, itemsPerPage],
+      queryKey: [...PAGINATED_HACKER_NEWS_QUERY_KEY, 'prefetch', page + 1, itemsPerPage, sortBy],
       queryFn: async (): Promise<HackerNewsResponse> => {
         try {
           return await hackerNewsService.fetchStories(nextPageParams);

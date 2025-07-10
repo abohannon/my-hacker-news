@@ -16,13 +16,14 @@ export class HackerNewsService {
   }
 
   private buildCacheKey(params: PaginationParams): string {
-    return `stories_${params.limit || 200}_${params.offset || 0}`;
+    return `stories_${params.limit || 200}_${params.offset || 0}_${params.sortBy || 'latest'}`;
   }
 
   private buildUrl(params: PaginationParams): string {
     const url = new URL(CLOUD_FUNCTION_URL);
     if (params.limit) url.searchParams.set('limit', params.limit.toString());
     if (params.offset) url.searchParams.set('offset', params.offset.toString());
+    if (params.sortBy) url.searchParams.set('sortBy', params.sortBy);
     return url.toString();
   }
 

@@ -164,15 +164,23 @@ WHERE
     LOWER(title) LIKE '%coding%' OR
     LOWER(title) LIKE '%developer%'
   )
-ORDER BY
-  timestamp DESC
 `;
 
 /**
- * Build the complete query with pagination
+ * Build the complete query with pagination and sorting
  */
-function buildQuery(limit = 200, offset = 0) {
+function buildQuery(limit = 200, offset = 0, sortBy = 'latest') {
+  const sortOptions = {
+    latest: 'ORDER BY timestamp DESC',
+    oldest: 'ORDER BY timestamp ASC',
+    score: 'ORDER BY CAST(score AS INT64) DESC, timestamp DESC',
+    descendants: 'ORDER BY CAST(descendants AS INT64) DESC, timestamp DESC'
+  };
+
+  const orderBy = sortOptions[sortBy] || sortOptions.latest;
+
   return `${BASE_QUERY}
+${orderBy}
 LIMIT ${limit}
 OFFSET ${offset}`;
 }
@@ -180,8 +188,8 @@ OFFSET ${offset}`;
 /**
  * Generate a hash of the query for cache key
  */
-function getQueryHash(query, limit, offset) {
-  const fullQuery = `${query}_limit_${limit}_offset_${offset}`;
+function getQueryHash(query, limit, offset, sortBy) {
+  const fullQuery = `${query}_limit_${limit}_offset_${offset}_sort_${sortBy}`;
   return crypto.createHash('md5').update(fullQuery).digest('hex');
 }
 
@@ -255,10 +263,11 @@ exports.fetchHackerNewsStories = async (req, res) => {
       // Parse and validate pagination parameters
       const limit = Math.min(Math.max(parseInt(req.query.limit) || 200, 1), 500); // Min 1, Max 500
       const offset = Math.max(parseInt(req.query.offset) || 0, 0); // Min 0
+      const sortBy = req.query.sortBy || 'latest'; // Default to 'latest'
 
-      console.log(`Fetching stories with limit: ${limit}, offset: ${offset}`);
+      console.log(`Fetching stories with limit: ${limit}, offset: ${offset}, sortBy: ${sortBy}`);
 
-      const queryHash = getQueryHash(BASE_QUERY, limit, offset);
+      const queryHash = getQueryHash(BASE_QUERY, limit, offset, sortBy);
       const cacheRef = firestore.collection(CACHE_COLLECTION).doc(queryHash);
 
       // Check cache first
@@ -285,7 +294,7 @@ exports.fetchHackerNewsStories = async (req, res) => {
       // Cache miss or expired - query BigQuery
       console.log('Querying BigQuery...');
       const [rows] = await bigquery.query({
-        query: buildQuery(limit, offset),
+        query: buildQuery(limit, offset, sortBy),
         location: 'US',
       });
 
@@ -297,7 +306,8 @@ exports.fetchHackerNewsStories = async (req, res) => {
         timestamp: Firestore.Timestamp.now(),
         queryText: BASE_QUERY, // This will be overwritten by buildQuery
         limit,
-        offset
+        offset,
+        sortBy // Store sortBy in cache
       });
 
       console.log(`Fetched ${stories.length} stories from BigQuery`);

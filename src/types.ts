@@ -32,4 +32,5 @@ export interface HackerNewsError {
 export interface PaginationParams {
   limit?: number;
   offset?: number;
+  sortBy?: string;
 }

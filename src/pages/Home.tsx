@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import RefreshIcon from '@mui/icons-material/Refresh';
 import StoryCard from "../components/StoryCard";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { usePaginatedHackerNews } from "../hooks/useHackerNews";
 
 const ITEMS_PER_PAGE = 100;
@@ -37,41 +37,8 @@ export default function Home() {
   } = usePaginatedHackerNews({
     page: currentPage,
     itemsPerPage: ITEMS_PER_PAGE,
+    sortBy: sort,
   });
-
-  // Client-side sorting for the current page
-  const sortedStories = useMemo(() => {
-    const storiesToSort = [...stories];
-    storiesToSort.sort((a, b) => {
-      switch (sort) {
-        case "score":
-          return (parseInt(b.score || "0") - parseInt(a.score || "0"));
-        case "descendants":
-          return (
-            (parseInt(b.descendants || "0") - parseInt(a.descendants || "0"))
-          );
-        case "latest":
-        case "oldest": {
-          const aTime = new Date(a.timestamp).getTime();
-          const bTime = new Date(b.timestamp).getTime();
-
-          // For invalid dates, fallback to string comparison
-          if (isNaN(aTime) || isNaN(bTime)) {
-            return sort === "latest"
-              ? b.timestamp.localeCompare(a.timestamp)
-              : a.timestamp.localeCompare(b.timestamp);
-          }
-
-          return sort === "latest"
-            ? bTime - aTime  // Latest first
-            : aTime - bTime; // Oldest first
-        }
-        default:
-          return 0;
-      }
-    });
-    return storiesToSort;
-  }, [stories, sort]);
 
   const loading = isLoading || isFetching;
 
@@ -88,7 +55,7 @@ export default function Home() {
   };
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + sortedStories.length;
+  const endIndex = startIndex + stories.length;
 
   return (
     <Container sx={{ pb: 4 }}>
@@ -157,7 +124,7 @@ export default function Home() {
       </Box>
 
       <Grid container spacing={3}>
-        {sortedStories.map((story) => (
+        {stories.map((story) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={story.id}>
             <StoryCard story={story} />
           </Grid>
